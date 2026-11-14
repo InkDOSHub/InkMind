@@ -21,8 +21,8 @@
 | Path | What |
 |---|---|
 | `index.html`, `app.js` | The chat |
-| `baixar.js` | Model download worker (written to OPFS a piece at a time) |
-| `extrair.js` | Text extraction from attached files |
+| `download-worker.js` | Model download worker (written to OPFS a piece at a time) |
+| `extract.js` | Text extraction from attached files |
 | `wllama/` | wllama 2.3.7 (2.4+ needs Memory64, which Safari lacks) |
 
 ## Part of InkDOS Hub
