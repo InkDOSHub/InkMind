@@ -1,0 +1,26 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Syntax check of first-party JavaScript
+        run: |
+          set -euo pipefail
+          for f in $(git ls-files '*.js' | grep -vE '^(ejs|wllama|aquarium|motionmark|lib|vendor)/'); do
+            node --check "$f"
+          done
+      - name: Required files
+        run: test -f index.html && test -f LICENSE && test -f README.md
